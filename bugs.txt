@@ -1,0 +1,2 @@
+1 - Check if player correctly type rock, paper or scissors. If typo -> results in tie.
+    To do this, check for proper typing before returning player choice.
