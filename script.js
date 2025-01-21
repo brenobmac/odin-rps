@@ -7,15 +7,16 @@ function playRound(player, computer) {
     // wins[player] = computer.
     // e.g. rock wins agains scissors.
     let wins = { rock: "scissors", paper: "rock", scissors: "paper" };
+    let resultText = document.querySelector("#round-result"); // To change the div value.
 
     if (wins[player] == computer) {
-        console.log(`Player wins - ${player} beats ${computer}!`);
+        resultText.textContent = `Player wins - ${player} beats ${computer}!`; // Changes div result
         return 0;
     } else if (wins[computer] == player) {
-        console.log(`Computer wins - ${computer} beats ${player}!`);
+        resultText.textContent = `Computer wins - ${computer} beats ${player}!`;
         return 1;
     } else {
-        console.log("It's a tie!");
+        resultText.textContent = "It's a tie!";
         return 2;
     }
 }
