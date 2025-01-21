@@ -1,0 +1,4 @@
+1 - Make a turn on/off function for buttons that turns buttons on when the DOM loads.
+    After it loads we keep track of the number of roudns the player wants to play via a prompt.
+    When round limit is reached, turn off buttons.
+    Add a replay button that turns buttons back on and we ask again for how many rounds to play.
