@@ -2,15 +2,10 @@ function getComputerChoice() {
     return ["rock", "paper", "scissors"][Math.floor(Math.random() * 3)]; //Picks a random number between 0, 1 or 2.
 }
 
-function getPlayerChoice() {
-    let choice = prompt(
-        "Choose between rock, paper or scissors!"
-    ).toLowerCase();
-
-    return choice; // For easy comparison
-}
-
 function playRound(player, computer) {
+    // Dictionary used for simple winning relation.
+    // wins[player] = computer.
+    // e.g. rock wins agains scissors.
     let wins = { rock: "scissors", paper: "rock", scissors: "paper" };
 
     if (wins[player] == computer) {
@@ -25,6 +20,7 @@ function playRound(player, computer) {
     }
 }
 
+/*
 function game() {
     let playerScore = 0;
     let computerScore = 0;
@@ -50,5 +46,21 @@ function game() {
         `Game over!! Player score - ${playerScore}. Computer score - ${computerScore}.`
     );
 }
+*/
 
-game();
+// Setting up the buttons to play the game instead of old getPlayerChoice function.
+
+let rockButton = document.querySelector("#rock-button");
+rockButton.addEventListener("click", () => {
+    playRound("rock", getComputerChoice()); //Plays round with rock and computer choice.
+});
+
+let paperButton = document.querySelector("#paper-button");
+paperButton.addEventListener("click", () => {
+    playRound("paper", getComputerChoice()); //Plays round with paper and computer choice.
+});
+
+let scissorButton = document.querySelector("#scissor-button");
+scissorButton.addEventListener("click", () => {
+    playRound("scissors", getComputerChoice()); //Plays round with scissors and computer choice.
+});
