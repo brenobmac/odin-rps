@@ -7,17 +7,30 @@ function playRound(player, computer) {
     // wins[player] = computer.
     // e.g. rock wins agains scissors.
     let wins = { rock: "scissors", paper: "rock", scissors: "paper" };
-    let resultText = document.querySelector("#round-result"); // To change the div value.
+    let resultText = document.querySelector("#round-result");
+    let playerScoreText = document.querySelector("#player-score");
+    let computerScoreText = document.querySelector("#computer-score");
 
-    if (wins[player] == computer) {
-        resultText.textContent = `Player wins - ${player} beats ${computer}!`; // Changes div result
-        return 0;
-    } else if (wins[computer] == player) {
+    if (wins[player] === computer) {
+        resultText.textContent = `Player wins - ${player} beats ${computer}!`;
+        playerScore += 1;
+        playerScoreText.textContent = `Player score: ${playerScore}`;
+
+        // Max score reached
+        if (playerScore === 5) {
+            buttonReset();
+        }
+    } else if (wins[computer] === player) {
         resultText.textContent = `Computer wins - ${computer} beats ${player}!`;
-        return 1;
+        computerScore += 1;
+        computerScoreText.textContent = `Computer score: ${computerScore}`;
+
+        // Max score reached
+        if (computerScore === 5) {
+            buttonReset();
+        }
     } else {
         resultText.textContent = "It's a tie!";
-        return 2;
     }
 }
 
@@ -25,15 +38,15 @@ function playRound(player, computer) {
 // We need to define them because we want to remove them from the buttons later, since
 // we can't remove arrow functions directly from the buttons
 function rockClick() {
-    playRound("rock", getComputerChoice()); //Plays round with rock and computer choice.
+    playRound("rock", getComputerChoice());
 }
 
 function paperClick() {
-    playRound("paper", getComputerChoice()); //Plays round with paper and computer choice.
+    playRound("paper", getComputerChoice());
 }
 
 function scissorClick() {
-    playRound("scissors", getComputerChoice()); //Plays round with scissors and computer choice.
+    playRound("scissors", getComputerChoice());
 }
 
 // Setting up the buttons to play the game instead of old getPlayerChoice function.
@@ -60,4 +73,8 @@ function buttonReset() {
     scissorButton.removeEventListener("click", scissorClick);
 }
 
-buttonStart();
+//Initial values for scores
+let playerScore = 0;
+let computerScore = 0;
+
+buttonStart(playerScore, computerScore);
