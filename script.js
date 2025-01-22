@@ -7,9 +7,6 @@ function playRound(player, computer) {
     // wins[player] = computer.
     // e.g. rock wins agains scissors.
     let wins = { rock: "scissors", paper: "rock", scissors: "paper" };
-    let resultText = document.querySelector("#round-result");
-    let playerScoreText = document.querySelector("#player-score");
-    let computerScoreText = document.querySelector("#computer-score");
 
     if (wins[player] === computer) {
         resultText.textContent = `Player wins - ${player} beats ${computer}!`;
@@ -49,32 +46,50 @@ function scissorClick() {
     playRound("scissors", getComputerChoice());
 }
 
-// Setting up the buttons to play the game instead of old getPlayerChoice function.
+function restartClick() {
+    playerScore = 0;
+    computerScore = 0;
+    resultText.textContent = "No games played yet!";
+    playerScoreText.textContent = "Player score: 0";
+    computerScoreText.textContent = "Computer score: 0";
+    buttonStart();
+}
+
+// Setting up the buttons to play the game
 function buttonStart() {
-    let rockButton = document.querySelector("#rock-button");
     rockButton.addEventListener("click", rockClick);
 
-    let paperButton = document.querySelector("#paper-button");
     paperButton.addEventListener("click", paperClick);
 
-    let scissorButton = document.querySelector("#scissor-button");
     scissorButton.addEventListener("click", scissorClick);
+
+    restartButton.addEventListener("click", restartClick);
 }
 
 // Reset buttons wheh max score for either player is reached.
 function buttonReset() {
-    let rockButton = document.querySelector("#rock-button");
     rockButton.removeEventListener("click", rockClick);
 
-    let paperButton = document.querySelector("#paper-button");
     paperButton.removeEventListener("click", paperClick);
 
-    let scissorButton = document.querySelector("#scissor-button");
     scissorButton.removeEventListener("click", scissorClick);
 }
 
-//Initial values for scores
+// Initial values for scores
 let playerScore = 0;
 let computerScore = 0;
 
+// Variables to select buttons
+let rockButton = document.querySelector("#rock-button");
+let paperButton = document.querySelector("#paper-button");
+let scissorButton = document.querySelector("#scissor-button");
+let restartButton = document.querySelector("#restart-button");
+
+// Texts in the divs
+let resultText = document.querySelector("#round-result");
+let playerScoreText = document.querySelector("#player-score");
+let computerScoreText = document.querySelector("#computer-score");
+
 buttonStart(playerScore, computerScore);
+
+// Separated button and text declarations globaly. Added restart game button functionality.
