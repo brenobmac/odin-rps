@@ -7,16 +7,23 @@
         <title>Odin Rock Paper Scissors</title>
     </head>
     <body>
-        <div id="text-container">
-            <div id="round-result">No games played yet!</div>
-            <div id="player-score">Player score: 0</div>
-            <div id="computer-score">Computer score: 0</div>
-        </div>
+        <div id="main-container">
+            <div id="text-container">
+                <div id="round-result">
+                    No games played yet - first to 5 wins!
+                </div>
+                <div id="player-score">Player score: 0</div>
+                <div id="computer-score">Computer score: 0</div>
+            </div>
 
-        <button id="rock-button">Rock</button>
-        <button id="paper-button">Paper</button>
-        <button id="scissor-button">Scissors</button>
-        <button id="restart-button">Restart game</button>
+            <div id="player-buttons">
+                <button id="rock-button"></button>
+                <button id="paper-button"></button>
+                <button id="scissor-button"></button>
+            </div>
+
+            <button id="restart-button">Restart game</button>
+        </div>
     </body>
     <script src="script.js"></script>
 </html>

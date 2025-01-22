@@ -9,21 +9,25 @@ function playRound(player, computer) {
     let wins = { rock: "scissors", paper: "rock", scissors: "paper" };
 
     if (wins[player] === computer) {
-        resultText.textContent = `Player wins - ${player} beats ${computer}!`;
+        resultText.textContent = `Player wins round - ${player} beats ${computer}!`;
         playerScore += 1;
         playerScoreText.textContent = `Player score: ${playerScore}`;
 
         // Max score reached
         if (playerScore === 5) {
+            resultText.textContent = `Player wins!!!`;
+            playerScoreText.textContent += " ♛";
             buttonReset();
         }
     } else if (wins[computer] === player) {
-        resultText.textContent = `Computer wins - ${computer} beats ${player}!`;
+        resultText.textContent = `Computer wins round - ${computer} beats ${player}!`;
         computerScore += 1;
         computerScoreText.textContent = `Computer score: ${computerScore}`;
 
         // Max score reached
         if (computerScore === 5) {
+            resultText.textContent = `Computer wins!!!`;
+            computerScoreText.textContent += " ♛";
             buttonReset();
         }
     } else {
@@ -91,5 +95,3 @@ let playerScoreText = document.querySelector("#player-score");
 let computerScoreText = document.querySelector("#computer-score");
 
 buttonStart(playerScore, computerScore);
-
-// Separated button and text declarations globaly. Added restart game button functionality.
