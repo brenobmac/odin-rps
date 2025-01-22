@@ -53,7 +53,7 @@ function scissorClick() {
 function restartClick() {
     playerScore = 0;
     computerScore = 0;
-    resultText.textContent = "No games played yet!";
+    resultText.textContent = "No games played yet - first to 5 wins!";
     playerScoreText.textContent = "Player score: 0";
     computerScoreText.textContent = "Computer score: 0";
     buttonStart();
